@@ -15,7 +15,7 @@ class WikipediaArticleBackpacker : CustomBackpacker<WikipediaArticle>() {
         val backpack = Backpacker().fromBytes(bytes)
         return WikipediaArticle(
                 backpack.string1!!,
-                backpack.string2!!,
+                backpack.string2,
                 backpack.integer1!!
         )
     }
