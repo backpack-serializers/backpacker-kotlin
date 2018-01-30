@@ -1,7 +1,8 @@
 package com.github.backpacker
 
-class WikipediaArticleBackpacker {
-    fun toBytes(wikipediaArticle: WikipediaArticle): ByteArray? {
+class WikipediaArticleBackpacker : CustomBackpacker<WikipediaArticle>() {
+
+    override fun toBytes(wikipediaArticle: WikipediaArticle): ByteArray {
         val backpack = Backpack(
                 string1 = wikipediaArticle.textInEnglish,
                 string2 = wikipediaArticle.textInCatalan,
@@ -10,7 +11,7 @@ class WikipediaArticleBackpacker {
         return Backpacker().toBytes(backpack)
     }
 
-    fun fromBytes(bytes: ByteArray): WikipediaArticle? {
+    override fun fromBytes(bytes: ByteArray): WikipediaArticle {
         val backpack = Backpacker().fromBytes(bytes)
         return WikipediaArticle(
                 backpack.string1!!,

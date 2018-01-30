@@ -4,7 +4,7 @@ abstract class CustomBackpacker<T> {
 
     abstract fun toBytes(person: T): ByteArray
 
-    abstract fun fromBytes(bytes: ByteArray): T?
+    abstract fun fromBytes(bytes: ByteArray): T
 
     fun toBytesList(persons: List<T>): ByteArray {
         return Backpacker().toBytesList(persons.map { toBytes(it) })
