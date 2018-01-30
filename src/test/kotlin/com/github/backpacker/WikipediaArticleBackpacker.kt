@@ -12,9 +12,6 @@ class WikipediaArticleBackpacker {
 
     fun fromBytes(bytes: ByteArray): WikipediaArticle? {
         val backpack = Backpacker().fromBytes(bytes)
-        if (backpack == null) {
-            return null
-        }
         return WikipediaArticle(
                 backpack.string1!!,
                 backpack.string2!!,

@@ -46,7 +46,7 @@ createToBytesRows int32 integer
 createToBytesRows int64 long
 
 out=$out"\n   return builder.build().toByteArray()}"
-out=$out"\n   fun fromBytes(bytes: ByteArray): Backpack? {"
+out=$out"\n   fun fromBytes(bytes: ByteArray): Backpack {"
 out=$out"\n   val parsedBackpack = BackpackMessageOuterClass.BackpackMessage.parseFrom(bytes)"
 out=$out"\n   return Backpack("
 

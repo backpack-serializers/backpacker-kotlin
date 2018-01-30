@@ -31,16 +31,13 @@ public class BackpackerShould {
         Person anna = new Person("Anna", sdf.parse("21/07/1988"), 20);
         Person roc = new Person("Roc", sdf.parse("23/04/1986"), 21);
 
-        List<byte[]> personsInBytes = new ArrayList<>();
-        personsInBytes.add(new PersonBackpacker().toBytes(anna));
-        personsInBytes.add(new PersonBackpacker().toBytes(roc));
+        List<Person> persons = new ArrayList<>();
+        persons.add(anna);
+        persons.add(roc);
 
-        byte[] listInBytes = new Backpacker().toBytesList(personsInBytes);
+        byte[] listInBytes = new PersonBackpacker().toBytesList(persons);
 
-        List<Person> personsInObject = new ArrayList<>();
-        for (byte[] personInBytes : new Backpacker().fromBytesList(listInBytes)) {
-            personsInObject.add(new PersonBackpacker().fromBytes(personInBytes));
-        }
+        List<Person> personsInObject = new PersonBackpacker().fromBytesList(listInBytes);
 
         assertEquals(
                 anna.getName(),

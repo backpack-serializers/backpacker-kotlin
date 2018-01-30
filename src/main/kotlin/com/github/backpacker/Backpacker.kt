@@ -12,7 +12,7 @@ class Backpacker {
         return builder.build().toByteArray()
     }
 
-    fun fromBytesList(bytes: ByteArray): List<ByteArray?> {
+    fun fromBytesList(bytes: ByteArray): List<ByteArray> {
         val parsedBackpackList = BackpackMessageOuterClass.BackpackMessagesList.parseFrom(bytes)
         return parsedBackpackList.listList.map { it.toByteArray() }
     }
@@ -442,7 +442,7 @@ class Backpacker {
         return builder.build().toByteArray()
     }
 
-    fun fromBytes(bytes: ByteArray): Backpack? {
+    fun fromBytes(bytes: ByteArray): Backpack {
         val parsedBackpack = BackpackMessageOuterClass.BackpackMessage.parseFrom(bytes)
         return Backpack(
                 parsedBackpack.string1,
