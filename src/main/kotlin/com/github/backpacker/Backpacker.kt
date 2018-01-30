@@ -1,6 +1,22 @@
 package com.github.backpacker
 
+import com.google.protobuf.ByteString
+
 class Backpacker {
+
+    fun toBytesList(backpacks: List<ByteArray>): ByteArray {
+        val builder = BackpackMessageOuterClass.BackpackMessagesList.newBuilder()
+        for (backpack in backpacks) {
+            builder.addList(ByteString.copyFrom(backpack))
+        }
+        return builder.build().toByteArray()
+    }
+
+    fun fromBytesList(bytes: ByteArray): List<ByteArray?> {
+        val parsedBackpackList = BackpackMessageOuterClass.BackpackMessagesList.parseFrom(bytes)
+        return parsedBackpackList.listList.map { it.toByteArray() }
+    }
+
     fun toBytes(backpack: Backpack): ByteArray {
         val builder = BackpackMessageOuterClass.BackpackMessage.newBuilder()
         if (backpack.string1 != null) {
