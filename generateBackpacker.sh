@@ -4,7 +4,27 @@ rm -rf src/main/kotlin/com/github/backpacker/Backpacker.kt
 
 out=""
 out=$out"\npackage com.github.backpacker"
+out=$out"\nimport com.google.protobuf.ByteString"
 out=$out"\n  class Backpacker {"
+
+out=$out"\n    fun toBytesList(backpacks: List<ByteArray>): ByteArray {"
+out=$out"\n        val builder = BackpackMessageOuterClass.BackpackMessagesList.newBuilder()"
+out=$out"\n        for (backpack in backpacks) {"
+out=$out"\n            builder.addList(ByteString.copyFrom(backpack))"
+out=$out"\n        }"
+out=$out"\n        return builder.build().toByteArray()"
+out=$out"\n    }"
+
+out=$out"\n    fun fromBytesList(bytes: ByteArray): List<ByteArray> {"
+out=$out"\n        val parsedBackpackList = BackpackMessageOuterClass.BackpackMessagesList.parseFrom(bytes)"
+out=$out"\n        return parsedBackpackList.listList.map { it.toByteArray() }"
+out=$out"\n    }"
+
+
+
+
+
+
 out=$out"\n    fun toBytes(backpack: Backpack): ByteArray {"
 out=$out"\n      val builder = BackpackMessageOuterClass.BackpackMessage.newBuilder()"
 
