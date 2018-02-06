@@ -1,4 +1,4 @@
-ext.backpacker_version = '0.0.1'
+ext.backpacker_version = '1.0.0'
 
 buildscript {
     ext.kotlin_version = '1.2.0'
