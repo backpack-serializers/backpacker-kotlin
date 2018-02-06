@@ -8,7 +8,7 @@ If you want to serialize a `Person` like this:
 ```kotlin
 data class Person(
         val name: String,
-        val birthday: Date?,
+        val birthday: Date,
         val fingers: Int,
         val hands: Int)
 ```
