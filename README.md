@@ -9,7 +9,8 @@ If you want to serialize a `Person` like this:
 data class Person(
         val name: String,
         val birthday: Date?,
-        val fingers: Int)
+        val fingers: Int,
+        val hands: Int)
 ```
 
 You'll need to write a `PersonBackpacker` class that extends `CustomBackpacker` like this:
@@ -20,7 +21,8 @@ class PersonBackpacker : CustomBackpacker<Person>() {
         val backpack = Backpack(
                 string1 = person.name,
                 long1 = person.birthday.time,
-                integer1 = person.fingers
+                integer1 = person.fingers,
+                integer2 = person.hands
         )
         return Backpacker().toBytes(backpack)
     }
@@ -31,6 +33,7 @@ class PersonBackpacker : CustomBackpacker<Person>() {
                 name = backpack.string1!!,
                 birthday = Date(backpack.long1!!),
                 fingers = backpack.integer1!!
+                hands = backpack.integer2!!
         )
     }
 }
