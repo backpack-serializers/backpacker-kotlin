@@ -43,7 +43,6 @@ compileTestKotlin {
 
 test {
   testLogging.showStandardStreams = true
-
 }
 
 publish {
