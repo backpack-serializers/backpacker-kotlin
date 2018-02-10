@@ -41,6 +41,11 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+test {
+  testLogging.showStandardStreams = true
+
+}
+
 publish {
     userOrg = 'backpacker'
     groupId = 'com.github.backpacker'
