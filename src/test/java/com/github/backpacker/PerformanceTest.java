@@ -18,33 +18,30 @@ public class PerformanceTest {
         byte[] bytes = new PersonBackpacker().toBytes(anna);
         String json = new Gson().toJson(anna);
 
-        long backpackToBytes = 0;
+        long start = System.currentTimeMillis();
+
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new PersonBackpacker().toBytes(anna);
-            backpackToBytes += (System.currentTimeMillis() - start);
         }
+        long backpackToBytes = System.currentTimeMillis() - start;
 
-        long backpackFromBytes = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new PersonBackpacker().fromBytes(bytes);
-            backpackFromBytes += (System.currentTimeMillis() - start);
         }
+        long backpackFromBytes = System.currentTimeMillis() - start;
 
-        long gsonToJson = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new Gson().toJson(anna);
-            gsonToJson += (System.currentTimeMillis() - start);
         }
+        long gsonToJson = System.currentTimeMillis() - start;
 
-        long gsonFromJson = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new Gson().fromJson(json, Person.class);
-            gsonFromJson += (System.currentTimeMillis() - start);
         }
+        long gsonFromJson = System.currentTimeMillis() - start;
 
         System.out.println("Totals:");
         System.out.println("Backpack toBytes: " + backpackToBytes + "ms");
@@ -61,33 +58,29 @@ public class PerformanceTest {
         byte[] bytes = new ThreeNumbersBackpacker().toBytes(threeNumbers);
         String json = new Gson().toJson(threeNumbers);
 
-        long backpackToBytes = 0;
+        long start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new ThreeNumbersBackpacker().toBytes(threeNumbers);
-            backpackToBytes += (System.currentTimeMillis() - start);
         }
+        long backpackToBytes = System.currentTimeMillis() - start;
 
-        long backpackFromBytes = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new ThreeNumbersBackpacker().fromBytes(bytes);
-            backpackFromBytes += (System.currentTimeMillis() - start);
         }
+        long backpackFromBytes = System.currentTimeMillis() - start;
 
-        long gsonToJson = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new Gson().toJson(threeNumbers);
-            gsonToJson += (System.currentTimeMillis() - start);
         }
+        long gsonToJson = System.currentTimeMillis() - start;
 
-        long gsonFromJson = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new Gson().fromJson(json, Person.class);
-            gsonFromJson += (System.currentTimeMillis() - start);
         }
+        long gsonFromJson = System.currentTimeMillis() - start;
 
         System.out.println("Totals:");
         System.out.println("Backpack toBytes: " + backpackToBytes + "ms");
@@ -112,33 +105,29 @@ public class PerformanceTest {
         byte[] bytes = new WikipediaArticleBackpacker().toBytes(wikipediaArticle);
         String json = new Gson().toJson(wikipediaArticle);
 
-        long backpackToBytes = 0;
+        long start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new WikipediaArticleBackpacker().toBytes(wikipediaArticle);
-            backpackToBytes += (System.currentTimeMillis() - start);
         }
+        long backpackToBytes = System.currentTimeMillis() - start;
 
-        long backpackFromBytes = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new WikipediaArticleBackpacker().fromBytes(bytes);
-            backpackFromBytes += (System.currentTimeMillis() - start);
         }
+        long backpackFromBytes = System.currentTimeMillis() - start;
 
-        long gsonToJson = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new Gson().toJson(wikipediaArticle);
-            gsonToJson += (System.currentTimeMillis() - start);
         }
+        long gsonToJson = System.currentTimeMillis() - start;
 
-        long gsonFromJson = 0;
+        start = System.currentTimeMillis();
         for (int i = 0; i < LOOPS; i++) {
-            long start = System.currentTimeMillis();
             new Gson().fromJson(json, Person.class);
-            gsonFromJson += (System.currentTimeMillis() - start);
         }
+        long gsonFromJson = System.currentTimeMillis() - start;
 
         System.out.println("Totals:");
         System.out.println("Backpack toBytes: " + backpackToBytes + "ms");
@@ -148,5 +137,4 @@ public class PerformanceTest {
         System.out.println("GSON fromJson: " + gsonFromJson + "ms");
         System.out.println("GSON message length: " + json.getBytes().length + " bytes");
     }
-
 }
